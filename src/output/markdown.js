@@ -30,7 +30,9 @@ class markdown extends Base {
             stats += `\n`;
         }
 
-        _.each(this.users, (time, name) => stats += `\n* **${name}**: ${time}`);
+        for (let [name, time, seconds] of this.users) {
+            stats += `\n* **${name}**: ${time}`;
+        }
 
         this.write(stats.substr(1));
     }

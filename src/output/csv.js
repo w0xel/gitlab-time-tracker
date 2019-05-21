@@ -24,10 +24,10 @@ class csv extends Base {
             });
         }
 
-        _.each(this.users, (time, name) => {
+        for (let [name, time, seconds] of this.users) {
             stats[0].push(name);
             stats[1].push(time);
-        });
+        }
 
         this.csvStats = Csv.stringify(stats);
     }

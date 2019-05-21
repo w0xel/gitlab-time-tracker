@@ -26,10 +26,10 @@ class xlsx extends Base {
             });
         }
 
-        _.each(this.users, (time, name) => {
+        for (let [name, time, seconds] of this.users) {
             stats[0].push(name);
             stats[1].push(time);
-        });
+        }
 
         this.xlsxStats = XLSX.utils.aoa_to_sheet(stats);
     }
