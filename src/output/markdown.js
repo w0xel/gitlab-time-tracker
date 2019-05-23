@@ -31,7 +31,8 @@ class markdown extends Base {
         }
 
         for (let [name, time, seconds] of this.users) {
-            stats += `\n* **${name}**: ${time}`;
+            let fullName = this.userNames[name];
+            stats += `\n* **${fullName}**: ${time}`;
         }
 
         this.write(stats.substr(1));

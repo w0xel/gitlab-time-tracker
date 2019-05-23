@@ -15,6 +15,7 @@ class hasTimes extends Base {
     constructor(config) {
         super(config);
         this.times = [];
+        this.fullNames = {};
     }
 
     /**
@@ -101,6 +102,7 @@ class hasTimes extends Base {
             // add to time spent & add to user specific time spent
             timeSpent += time.seconds;
             timeUsers[note.author.username] += time.seconds;
+            this.fullNames[note.author.username] = note.author.name;
 
             time.project_namespace = this.project_namespace;
             times.push(time);

@@ -101,6 +101,7 @@ class base {
         let totalSpent = 0;
         let spent = 0;
         let users = {};
+        let userNames = {};
         let projects = {};
         let times = [];
 
@@ -110,6 +111,7 @@ class base {
                     if (!users[time.user]) users[time.user] = 0;
                     if (!projects[time.project_namespace]) projects[time.project_namespace] = 0;
 
+                    userNames[time.user] = issue.fullNames[time.user];
                     users[time.user] += time.seconds;
                     projects[time.project_namespace] += time.seconds;
 
@@ -142,6 +144,7 @@ class base {
         this.users = userArr;
 
         this.projects = _.mapObject(projects, project => this.config.toHumanReadable(project, 'stats'));
+        this.userNames = userNames;
         this.stats = {
             'total estimate': this.config.toHumanReadable(totalEstimate, 'stats'),
             'total spent': this.config.toHumanReadable(totalSpent, 'stats'),
